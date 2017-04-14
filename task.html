@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="firstAngularApp">
+<head>
+    <title>Popular Movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta charset="utf-8" />
+  <style>
+  .notify-badge{
+    background: #8C9190;
+    height:2rem;
+    top:1rem;
+    left:1.5rem;
+    width:4rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+    border-radius: 100%;
+    color:white;
+    float: right;
+
+}
+  </style>
+</head>
+<body style="background-color: #8C9190;">
+  <div class="container-fluid">
+      <div ng-controller="usersController">
+        <h1 style="color:#D5F0EA;">Popular Movies</h1>
+          <div ng-repeat="result in results" class="col-xs-6 col-sm-4 col-md-3 " data-toggle="modal" data-target="#myModal">
+            <figure ng-click="movieDetail(result)" style="background-color: #D5F0EA; margin-bottom :10px;">
+                <div class="badge" ng-bind="result.vote_average"></div>
+                <img src='{{"http://image.tmdb.org/t/p/w342/"+ result.poster_path}}' class='img-responsive'/>
+                <figcaption class="text-center">{{ result.original_title}}</figcaption>
+            </figure>
+      </div>
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" ng-controller="usersController">
+
+      <!-- Modal content-->
+        <div id="review" class = "well">
+          <h3>{{title}}</h3>
+          <p> {{overview}}</p>
+          <hr>
+          <p>{{id}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+      </div>
+  </div>
+    <script src="E:\nanoDegreeTraining\movie project\scripts/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="Controller/controller.js"></script>
+    <script src="Service/service.js"></script>
+    <script src="Service/TailerService.js"></script>
+</body>
+</html>
