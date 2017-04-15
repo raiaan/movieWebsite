@@ -30,8 +30,8 @@
           <div ng-repeat="result in results" class="col-xs-6 col-sm-4 col-md-3 " data-toggle="modal" data-target="#myModal">
             <figure ng-click="movieDetail(result)" style="background-color: #D5F0EA; margin-bottom :10px;">
                 <div class="badge" ng-bind="result.vote_average"></div>
-                <img src='{{"http://image.tmdb.org/t/p/w342/"+ result.poster_path}}' class='img-responsive'/>
-                <figcaption class="text-center">{{ result.original_title}}</figcaption>
+                <img ng-src='{{"http://image.tmdb.org/t/p/w342/"+ result.poster_path}}' class='img-responsive'/>
+                <figcaption class="text-center" ng-bind="result.original_title"></figcaption>
             </figure>
       </div>
         <!-- Modal -->
@@ -43,7 +43,12 @@
           <h3>{{title}}</h3>
           <p> {{overview}}</p>
           <hr>
-          <p>{{id}}</p>
+          <div ng-repeat="t in tailer">
+            <iframe width="560" height="315" ng-src='{{trustSrc(t)}}' frameborder="0" allowfullscreen>
+            </iframe>
+
+          </div>
+
         </div>
       </div>
 
@@ -51,9 +56,9 @@
   </div>
       </div>
   </div>
-    <script src="E:\nanoDegreeTraining\movie project\scripts/angular.js"></script>
+    <script src="scripts/angular.js"></script>
     <script src="app.js"></script>
-    <script src="Controller/controller.js"></script>
+    <script src="Controller/movieController.js"></script>
     <script src="Service/service.js"></script>
     <script src="Service/TailerService.js"></script>
 </body>
